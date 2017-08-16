@@ -17,8 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         try {
-//            String t = PublicMethods.encrypt("AndroidMasterVDV", "King of All Developers");
-            String t = PublicMethods.authenticate("AndroidMasterVDV", "Authentication");
+            String t = PublicMethods.authenticate("AndroidMasterVDV", "King of All Developers");
             Log.d("encryption", "onCreate:" + t);
             PublicPreference publicPreference = new PublicPreference(this, "", t);
             PublicMethods publicMethods = new PublicMethods(t);
