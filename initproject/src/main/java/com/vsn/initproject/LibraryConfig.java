@@ -6,4 +6,5 @@ package com.vsn.initproject;
 
 public class LibraryConfig {
     public static final String oAuthKey = "��1_��\u0018\u0011)G�)����";
+    public static boolean isVerified = false;
 }

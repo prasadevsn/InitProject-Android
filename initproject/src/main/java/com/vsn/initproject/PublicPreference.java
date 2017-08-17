@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
-import static com.vsn.initproject.LibraryConfig.oAuthKey;
+import static com.vsn.initproject.LibraryConfig.isVerified;
 
 /**
  * Created by prasad on 15/08/17.
@@ -27,8 +27,8 @@ public class PublicPreference {
     // shared pref mode
     private int PRIVATE_MODE;
 
-    public PublicPreference(@NonNull Context context, String PREF_NAME, String key) throws Exception {
-        if (!key.equals(oAuthKey))
+    public PublicPreference(@NonNull Context context, String PREF_NAME) throws Exception {
+        if (!isVerified)
             throw null;
         if (PREF_NAME!=null && !PREF_NAME.isEmpty())
         this.PREF_NAME = PREF_NAME;

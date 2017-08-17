@@ -16,6 +16,7 @@ import java.util.TimeZone;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
+import static com.vsn.initproject.LibraryConfig.isVerified;
 import static com.vsn.initproject.LibraryConfig.oAuthKey;
 
 /**
@@ -35,14 +36,14 @@ public class PublicMethods {
      * getActivity from Fragment
      * @param mContext
      */
-    public PublicMethods(@NonNull Context mContext, String key) throws Exception {
-        if (!key.equals(oAuthKey))
+    public PublicMethods(@NonNull Context mContext) throws Exception {
+        if (!isVerified)
             throw null;
         this.mContext = mContext;
     }
 
-    public PublicMethods(String key) throws Exception {
-        if (!key.equals(oAuthKey))
+    public PublicMethods() throws Exception {
+        if (!isVerified)
             throw null;
     }
 
@@ -341,14 +342,16 @@ public class PublicMethods {
             return null;
     }
 
-    public static String authenticate(String key, String body) throws Exception {
+    public static void authenticate(String key, String body) throws Exception {
         byte[] raw = key.getBytes();
         byte[] value = body.getBytes();
         SecretKeySpec skeySpec = new SecretKeySpec(raw, "AES");
         Cipher cipher = Cipher.getInstance("AES");
         cipher.init(Cipher.ENCRYPT_MODE, skeySpec);
         byte[] encrypted = cipher.doFinal(value);
-        return new String(encrypted);
+        String temp = new String(encrypted);
+        if (temp.equals(oAuthKey))
+            isVerified = true;
     }
 
     public String encrypt(String key, String body) throws Exception {

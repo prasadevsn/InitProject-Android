@@ -17,10 +17,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         try {
-            String t = PublicMethods.authenticate("AndroidMasterVDV", "King of All Developers");
-            Log.d("encryption", "onCreate:" + t);
-            PublicPreference publicPreference = new PublicPreference(this, "", t);
-            PublicMethods publicMethods = new PublicMethods(t);
+            PublicMethods.authenticate("AndroidMasterVDV", "King of All Developers");
+            PublicPreference publicPreference = new PublicPreference(this, "");
+            PublicMethods publicMethods = new PublicMethods();
 //          key -> 1234567890123456
         } catch (Exception e) {
             Log.e("error", "onCreate: ", e);
