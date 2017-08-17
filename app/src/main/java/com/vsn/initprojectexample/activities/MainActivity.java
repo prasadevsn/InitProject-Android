@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         try {
-            PublicMethods.authenticate("AndroidMasterVDV", "King of All Developers");
+            PublicMethods.authenticate("!P@$$w0rd1234567", "King of All Developers");
             PublicPreference publicPreference = new PublicPreference(this, "");
             PublicMethods publicMethods = new PublicMethods();
 //          key -> 1234567890123456
